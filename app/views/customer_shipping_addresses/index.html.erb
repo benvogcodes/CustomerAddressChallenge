@@ -6,7 +6,7 @@
 
 <div class="container">
   <%= form_tag({action: :import}, multipart: true) do %>
-  <%= file_field_tag 'addresses' %>
+  <%= file_field_tag 'addresses', accept: 'text/csv' %>
   <br>
   <%= submit_tag("Upload") %>
   <% end %>
