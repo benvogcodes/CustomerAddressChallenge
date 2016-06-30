@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CustomerShippingAddressesController, type: :controller do
   describe 'GET #index' do
-    it "populates an array of all CustomerShippingAddresses" do
-
+    it 'populates an array of all CustomerShippingAddresses' do
     end
 
     it 'renders the index view' do
@@ -13,12 +12,12 @@ RSpec.describe CustomerShippingAddressesController, type: :controller do
   end
 
   describe 'POST #import' do
-    let(:bad_uploaded){ ActionDispatch::Http::UploadedFile.new({
-    :tempfile => File.new(Rails.root.join('spec/support/customer_shipping_addresses_BAD.csv'))
-    }) }
-    let(:good_uploaded){ ActionDispatch::Http::UploadedFile.new({
-    :tempfile => File.new(Rails.root.join('spec/support/customer_shipping_addresses.csv'))
-    })}
+    let(:bad_uploaded) do
+      ActionDispatch::Http::UploadedFile.new(tempfile: File.new(Rails.root.join('spec/support/customer_shipping_addresses_BAD.csv')))
+    end
+    let(:good_uploaded) do
+      ActionDispatch::Http::UploadedFile.new(tempfile: File.new(Rails.root.join('spec/support/customer_shipping_addresses.csv')))
+    end
 
     context "with params['addresses']" do
       context 'import validation succeeds' do
