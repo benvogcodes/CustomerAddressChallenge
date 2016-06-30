@@ -2,6 +2,7 @@ require 'csv'
 
 class CustomerShippingAddressesController < ApplicationController
   def index
+    @shipping_addresses = CustomerShippingAddress.all
   end
 
   def create

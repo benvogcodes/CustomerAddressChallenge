@@ -4,3 +4,26 @@
   <%= file_field_tag 'addresses' %><br>
   <%= submit_tag("Upload") %>
 <% end %>
+
+<br>
+
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+  </tr>
+<% @shipping_addresses.each do |shipping_address| %>
+  <tr>
+    <td><%= shipping_address.first_name %></td>
+    <td><%= shipping_address.last_name %></td>
+    <td><%= shipping_address.address %></td>
+    <td><%= shipping_address.city %></td>
+    <td><%= shipping_address.state %></td>
+    <td><%= shipping_address.zip_code %></td>
+  </tr>
+<% end %>
+</table>
