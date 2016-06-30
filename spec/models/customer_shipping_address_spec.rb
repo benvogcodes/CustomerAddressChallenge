@@ -56,12 +56,14 @@ RSpec.describe CustomerShippingAddress, type: :model do
   end
 
   context "get_validation_warnings" do
-    pending "returns an array with validation warnings if any column values are not present" do
-
+    it "returns an array with validation warnings if any column values are not present" do
+      bad_import = File.join('spec', 'support', 'customer_shipping_addresses_BAD.csv')
+      expect(CustomerShippingAddress.get_validation_warnings(bad_import)).to eq(["city is required for all records", "state is required for all records", "zip is required for all records", "fname is required for all records"])
     end
 
-    pending "returns an empty array if all column values are present" do
-
+    it "returns an empty array if all column values are present" do
+      good_import = File.join('spec', 'support', 'customer_shipping_addresses.csv')
+      expect(CustomerShippingAddress.get_validation_warnings(good_import)).to eq([])
     end
   end
 end
