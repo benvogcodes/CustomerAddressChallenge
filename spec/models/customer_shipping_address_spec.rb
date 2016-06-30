@@ -43,8 +43,10 @@ RSpec.describe CustomerShippingAddress, type: :model do
   end
 
   context "import" do
-    pending "creates an object for every non-header row in the import file" do
-
+    it "creates an object for every non-header row in the import file" do
+      expect(CustomerShippingAddress.count).to eq(0)
+      CustomerShippingAddress.import(good_import)
+      expect(CustomerShippingAddress.count).to eq(500)
     end
   end
 
