@@ -78,8 +78,3 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: CustomerAddressChallenge_production
-  username: CustomerAddressChallenge
-  password: <%= ENV['CUSTOMERADDRESSCHALLENGE_DATABASE_PASSWORD'] %>
