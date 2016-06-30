@@ -14,11 +14,11 @@ gem 'jquery-datatables-rails', '~> 3.3.0'
 
 group :development, :test do
   gem 'byebug'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :development do
-  gem 'brakeman', :require => false
+  gem 'brakeman', require: false
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
