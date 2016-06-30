@@ -1,6 +1,6 @@
 <h1>Welcome to the Customer Shipping Addresses Portal</h1>
 
-<%= form_tag({action: :create}, multipart: true) do %>
+<%= form_tag({action: :import}, multipart: true) do %>
   <%= file_field_tag 'addresses' %><br>
   <%= submit_tag("Upload") %>
 <% end %>

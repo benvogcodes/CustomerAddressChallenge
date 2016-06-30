@@ -5,7 +5,7 @@ class CustomerShippingAddressesController < ApplicationController
     @shipping_addresses = CustomerShippingAddress.all
   end
 
-  def create
+  def import
     address_data = params['addresses'].tempfile
 
     CSV.foreach(address_data, :headers => true) do |row|
