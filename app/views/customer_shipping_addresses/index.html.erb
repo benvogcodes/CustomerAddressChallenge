@@ -1,33 +1,50 @@
 <h1>Welcome to the Customer Shipping Addresses Portal</h1>
 
-<%= form_tag({action: :create}, multipart: true) do %>
-  <%= file_field_tag 'addresses' %><br>
+<div class="container">
+      <%= flash[:notice] %>
+</div>
+
+<div id="errors" class="container">
+  <% if flash[:error] %>
+    <ul>
+      <% flash[:error].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<div class="container">
+  <%= form_tag({action: :import}, multipart: true) do %>
+  <%= file_field_tag 'addresses', accept: 'text/csv' %>
+  <br>
   <%= submit_tag("Upload") %>
-<% end %>
+  <% end %>
+</div>
 
-<br>
-
-<table id="customer_shipping_addresses">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @shipping_addresses.each do |shipping_address| %>
-    <tr>
-      <td><%= shipping_address.first_name %></td>
-      <td><%= shipping_address.last_name %></td>
-      <td><%= shipping_address.address %></td>
-      <td><%= shipping_address.city %></td>
-      <td><%= shipping_address.state %></td>
-      <td><%= shipping_address.zip_code %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <table id="customer_shipping_addresses">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @shipping_addresses.each do |shipping_address| %>
+      <tr>
+        <td><%= shipping_address.first_name %></td>
+        <td><%= shipping_address.last_name %></td>
+        <td><%= shipping_address.address %></td>
+        <td><%= shipping_address.city %></td>
+        <td><%= shipping_address.state %></td>
+        <td><%= shipping_address.zip_code %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
