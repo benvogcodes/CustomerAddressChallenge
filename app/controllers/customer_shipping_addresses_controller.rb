@@ -8,13 +8,13 @@ class CustomerShippingAddressesController < ApplicationController
       address_data = params['addresses'].tempfile
       if CustomerShippingAddress.validate_import(address_data)
         CustomerShippingAddress.import(address_data)
-        redirect_to root_url, notice: "Addresses imported."
+        redirect_to root_url, notice: 'Addresses imported'
       else
-        flash[:error] =  CustomerShippingAddress.get_validation_warnings(address_data)
-        redirect_to root_url, notice: "Import failed validation"
+        flash[:error] = CustomerShippingAddress.get_validation_warnings(address_data)
+        redirect_to root_url, notice: 'Import failed validation'
       end
     else
-      redirect_to root_url, notice: "Please select a file to import"
+      redirect_to root_url, notice: 'Please select a file to import'
     end
   end
 end

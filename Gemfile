@@ -13,12 +13,22 @@ gem 'rubocop', require: false
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'byebug'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :development do
-  gem 'brakeman', :require => false
+  gem 'brakeman', require: false
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
