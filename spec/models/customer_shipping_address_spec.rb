@@ -8,6 +8,9 @@ RSpec.describe CustomerShippingAddress, type: :model do
   let(:address5){ build(:customer_shipping_address, city: nil) }
   let(:address6){ build(:customer_shipping_address, state: nil) }
   let(:address7){ build(:customer_shipping_address, zip_code: nil) }
+  let(:bad_import){ File.join('spec', 'support', 'customer_shipping_addresses_BAD.csv') }
+  let(:good_import){ File.join('spec', 'support', 'customer_shipping_addresses.csv') }
+
 
   context "create" do
     it "is valid with a first_name, last_name, address, city, state and zip_code" do
@@ -46,23 +49,21 @@ RSpec.describe CustomerShippingAddress, type: :model do
   end
 
   context "validate_import" do
-    pending "returns true if there are no validation warnings" do
-
+    it "returns true if there are no validation warnings" do
+      expect(CustomerShippingAddress.validate_import(good_import)).to eq(true)
     end
 
-    pending "returns false if there are any validation warnings" do
-
+    it "returns false if there are any validation warnings" do
+      expect(CustomerShippingAddress.validate_import(bad_import)).to eq(false)
     end
   end
 
   context "get_validation_warnings" do
     it "returns an array with validation warnings if any column values are not present" do
-      bad_import = File.join('spec', 'support', 'customer_shipping_addresses_BAD.csv')
       expect(CustomerShippingAddress.get_validation_warnings(bad_import)).to eq(["city is required for all records", "state is required for all records", "zip is required for all records", "fname is required for all records"])
     end
 
     it "returns an empty array if all column values are present" do
-      good_import = File.join('spec', 'support', 'customer_shipping_addresses.csv')
       expect(CustomerShippingAddress.get_validation_warnings(good_import)).to eq([])
     end
   end
